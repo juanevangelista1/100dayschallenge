@@ -1,7 +1,13 @@
-export function GameControlOptions(playerChoice, machineChoice) {
+export function getMachineChoice() {
 	const choices = ['rock', 'paper', 'scissors'];
-	if (![choices].includes(playerChoice) || ![choices].includes(machineChoice)) {
-		console.error('Invalid choice');
+	const randomIndex = Math.floor(Math.random() * choices.length);
+	return choices[randomIndex];
+}
+
+export function determineGameResult(playerChoice, machineChoice) {
+	const choices = ['rock', 'paper', 'scissors'];
+	if (!choices.includes(playerChoice) || !choices.includes(machineChoice)) {
+		console.error(`Invalid choice: Player: ${playerChoice}, Machine: ${machineChoice}`);
 		return {
 			winner: 'error',
 			message: 'Invalid choice',
@@ -12,7 +18,7 @@ export function GameControlOptions(playerChoice, machineChoice) {
 	if (playerChoice === machineChoice) {
 		return {
 			winner: 'draw',
-			message: "It's a draw",
+			message: "It's a draw!",
 			scoreChange: 0,
 		};
 	}
@@ -24,15 +30,13 @@ export function GameControlOptions(playerChoice, machineChoice) {
 	) {
 		return {
 			winner: 'player',
-			message: 'You win!',
+			message: 'You Win!',
 			scoreChange: 1,
 		};
 	}
-	return;
-}
-
-export function ComputerChoice() {
-	const choices = ['rock', 'paper', 'scissors'];
-	const randomChoice = choices[Math.floor(Math.random() * choices.length)];
-	return choices[randomChoice];
+	return {
+		winner: 'machine',
+		message: 'You Lose!',
+		scoreChange: 0,
+	};
 }
