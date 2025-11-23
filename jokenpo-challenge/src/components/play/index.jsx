@@ -10,7 +10,7 @@ export function Play({ onSelectChoice }) {
 	return (
 		<div className='flex flex-col items-center p-8'>
 			<h2 className='text-3xl font-bold mb-10'>Choose Your Move</h2>
-			<div className='flex justify-center w-full gap-[10px] my-10 mx-auto'>
+			<div className='flex justify-center w-full gap-[10px] mx-auto'>
 				{choices.map((choice) => (
 					<button
 						key={choice.value}
